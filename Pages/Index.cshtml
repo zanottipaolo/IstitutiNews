@@ -1,0 +1,17 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 style="text-align: center;">News</h1>
+    <p>Best news from all over the world!</p>
+    <p>Click on a button to read the articles</p>
+</div>
+
+<div class="text-center">
+    <p><a role="button" class="btn btn-primary mt-5 text-light" asp-page="./miur">MIUR</a></p>
+    <p><a role="button" class="btn btn-warning mt-3 text-light" asp-page="./sole">Il Sole 24 Ore</a></p>
+    <p><a role="button" class="btn btn-success mt-3 mb-3 text-light" asp-page="./usr">Ufficio Scolastico Regionale - Lombardia</a></p>
+</div>

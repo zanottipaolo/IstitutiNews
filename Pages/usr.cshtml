@@ -1,0 +1,53 @@
+﻿@page
+@model schools_identity.Pages.usrModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "Ufficio Scolastico Regionale";
+
+    int z = 0;
+}
+
+<h1 style="text-align: center; color: #64C079;" class="mt-3 mb-3">Ufficio Scolastico Regionale per la Lombardia</h1>
+
+<div id="displayCount"></div>
+
+@if (Model.list_ufficio.Count() == 0)
+{
+    <p style="text-align: center;">There aren't new news.</p>
+}
+else
+{
+    if (SignInManager.IsSignedIn(User))
+    {
+        <p>News to read: @Model.list_ufficio.Count()</p>
+    }
+    <div class="mt-3">
+        @foreach (var item_ufficio in Model.list_ufficio)
+        {
+            z++;
+            <h4 style="color: greenyellow;">@item_ufficio.Title</h4>
+            <p>@item_ufficio.Description</p>
+            <p>@item_ufficio.PublishDate</p>
+            <p><a href="@item_ufficio.Link" target="_blank">Link</a></p>
+            if (z < Model.list_ufficio.Count())
+            {
+                <hr />
+            }
+        }
+    </div>
+}
+
+<p style="text-align: center;"><a asp-page="./Index">Back to Home Page</a></p>
+
+<script>
+    var counter = sessionStorage.getItem('count_usr');
+
+    if (counter === null) {
+        counter = 0;
+    }
+    counter++;
+
+    sessionStorage.setItem("count_usr", counter);
+    document.getElementById("displayCount").innerHTML = "Number of visit: " + sessionStorage.getItem("count_usr");
+</script>

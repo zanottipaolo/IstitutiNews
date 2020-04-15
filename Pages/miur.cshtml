@@ -1,0 +1,54 @@
+﻿@page
+@model schools_identity.Pages.miurModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@{
+    ViewData["Title"] = "MIUR";
+
+    int i = 0;
+}
+
+<h1 style="text-align: center; color: #3B9AFF;" class="mt-3 mb-3">MIUR</h1>
+
+<div id="displayCount"></div>
+
+@if (Model.list_miur.Count() == 0)
+{
+    <p style="text-align: center;">There aren't new news.</p>
+}
+else
+{
+    if (SignInManager.IsSignedIn(User))
+    {
+        <p>News to read: @Model.list_miur.Count()</p>
+    }
+
+    <div class="mt-3">
+        @foreach (var item_miur in Model.list_miur)
+        {
+            i++;
+            <h4 style="color: greenyellow;">@item_miur.Title</h4>
+            <p>@item_miur.Description</p>
+            <p>@item_miur.PublishDate</p>
+            <p><a href="@item_miur.Link" target="_blank">Link</a></p>
+            if (i < Model.list_miur.Count())
+            {
+                <hr />
+            }
+        }
+    </div>
+}
+
+<p style="text-align: center;"><a asp-page="./Index">Back to Home Page</a></p>
+
+<script>
+    var counter = sessionStorage.getItem('count_miur');
+
+    if (counter === null) {
+        counter = 0;
+    }
+    counter++;
+
+    sessionStorage.setItem("count_miur", counter);
+    document.getElementById("displayCount").innerHTML = "Number of visit: " + sessionStorage.getItem("count_miur");
+</script>
