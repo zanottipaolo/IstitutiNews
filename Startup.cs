@@ -29,37 +29,19 @@ namespace schools_identity
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
-            });
-            services.AddMemoryCache();
-            services.AddMvc( options => { options.EnableEndpointRouting = false; });*/
-
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<listDbContext>(opt =>
                 opt.UseSqlite(Configuration["ConnectionStrings:schoolDB"]));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-                //.AddRoles<IdentityRole>();
+                .AddEntityFrameworkStores<ApplicationDbContext>();    
             services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
-            //app.UseStaticFiles();
-            //app.UseSession();
-            /*app.UseMvc(routes =>{
-                routes.MapRoute(
-                  name: "default",
-                  template: "{controller}/{action=Index}/{id?}");
-              });*/
-
-            //CreateRoles(serviceProvider).Wait();
-
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -81,28 +63,10 @@ namespace schools_identity
             app.UseAuthentication();
             app.UseAuthorization();
 
-            //app.UseSession();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
             });
         }
-
-        /*private async Task CreateRoles(IServiceProvider serviceProvider)
-        {
-            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            string[] roleNames = { "admin", "staff", "user" };
-            IdentityResult roleResult;
-
-            foreach (var roleName in roleNames)
-            {
-                var roleExist = await RoleManager.RoleExistsAsync(roleName);
-                if (!roleExist)
-                {
-                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
-                }
-            }
-        }*/
     }
 }

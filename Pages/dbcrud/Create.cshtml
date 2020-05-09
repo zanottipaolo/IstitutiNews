@@ -5,6 +5,24 @@
     ViewData["Title"] = "Create";
 }
 
+<style>
+    ::-webkit-input-placeholder {
+        font-style: italic;
+    }
+
+    :-moz-placeholder {
+        font-style: italic;
+    }
+
+    ::-moz-placeholder {
+        font-style: italic;
+    }
+
+    :-ms-input-placeholder {
+        font-style: italic;
+    }
+</style>
+
 <h1 style="text-align: center;">Create</h1>
 
 <h4>School</h4>
@@ -14,38 +32,38 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="list.name" class="control-label"></label>
-                <input asp-for="list.name" class="form-control" />
+                <label asp-for="list.name" class="control-label">Name</label>
+                <input asp-for="list.name" class="form-control" placeholder="Name of the school" />
                 <span asp-validation-for="list.name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="list.city" class="control-label"></label>
-                <input asp-for="list.city" class="form-control" />
+                <label asp-for="list.city" class="control-label">City</label>
+                <input asp-for="list.city" class="form-control" placeholder="City of the school" />
                 <span asp-validation-for="list.city" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="list.address" class="control-label"></label>
-                <input asp-for="list.address" class="form-control" />
+                <label asp-for="list.address" class="control-label">Address</label>
+                <input asp-for="list.address" class="form-control" placeholder="Address of the school" />
                 <span asp-validation-for="list.address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="list.headmaster" class="control-label"></label>
-                <input asp-for="list.headmaster" class="form-control" />
+                <label asp-for="list.headmaster" class="control-label">Headmaster</label>
+                <input asp-for="list.headmaster" class="form-control" placeholder="Headmaster of the school" />
                 <span asp-validation-for="list.headmaster" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="list.courses" class="control-label"></label>
-                <input asp-for="list.courses" class="form-control" />
+                <label asp-for="list.courses" class="control-label">Courses</label>
+                <input asp-for="list.courses" class="form-control" placeholder="All the courses of the school" />
                 <span asp-validation-for="list.courses" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button class="btn btn-success"><i class="fa fa-check"></i></button>
             </div>
         </form>
     </div>
 </div>
 
-<p style="text-align: center;"><a asp-page="Index">Back to the list</a></p>
+<p style="text-align: center;"><a asp-page="Index"><u>Back to the list</u></a></p>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

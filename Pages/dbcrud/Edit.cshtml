@@ -15,38 +15,38 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="list.Id" />
             <div class="form-group">
-                <label asp-for="list.name" class="control-label"></label>
+                <label asp-for="list.name" class="control-label">Name</label>
                 <input asp-for="list.name" class="form-control" />
                 <span asp-validation-for="list.name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="list.city" class="control-label"></label>
+                <label asp-for="list.city" class="control-label">City</label>
                 <input asp-for="list.city" class="form-control" />
                 <span asp-validation-for="list.city" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="list.address" class="control-label"></label>
+                <label asp-for="list.address" class="control-label">Address</label>
                 <input asp-for="list.address" class="form-control" />
                 <span asp-validation-for="list.address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="list.headmaster" class="control-label"></label>
+                <label asp-for="list.headmaster" class="control-label">Headmaster</label>
                 <input asp-for="list.headmaster" class="form-control" />
                 <span asp-validation-for="list.headmaster" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="list.courses" class="control-label"></label>
+                <label asp-for="list.courses" class="control-label">Courses</label>
                 <input asp-for="list.courses" class="form-control" />
                 <span asp-validation-for="list.courses" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <button class="btn btn-success"><i class="fa fa-check"></i></button>
             </div>
         </form>
     </div>
 </div>
 
-<p style="text-align: center;"><a asp-page="./Index">Back to the list</a></p>
+<p style="text-align: center;"><a asp-page="./Index"><u>Back to the list</u></a></p>
 
 
 @section Scripts {
